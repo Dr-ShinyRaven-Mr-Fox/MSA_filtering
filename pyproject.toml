@@ -12,4 +12,4 @@ readme = "README.md"
 authors = [{ name = "Dr-ShinyRaven-Mr-Fox", email = "bfouks@wwu.de" }]
 
 [project.scripts]
-cdsMSAfilter_guidance = "cdsMSAfilter_guidance.__main__:main"
+cdsMSAfilter_guidance = "MSA_filtering.__main__:main"
