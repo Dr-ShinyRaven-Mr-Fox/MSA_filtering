@@ -1,1 +1,1 @@
-from .cdsMSAfilter_guidance import cdsMSAfilter_guidance
+from MSA_filtering import cdsMSAfilter_guidance
