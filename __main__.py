@@ -10,3 +10,5 @@ import os
 from Bio import AlignIO
 import argparse 
 from cdsMSAfilter_guidance import cdsMSAfilter
+
+cdsMSAfilter(args.ProjectMode,args.GuidanceFolder,args.FilteringScore,args.MSA,args.FilteredMSA)
