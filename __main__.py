@@ -9,6 +9,4 @@ Created on Tue Jun 27 10:50:35 2023
 import os
 from Bio import AlignIO
 import argparse 
-
-if __name__ == '__main__':
-    main()
+from MSA_filter-main import cdsMSAfilter_guidance
