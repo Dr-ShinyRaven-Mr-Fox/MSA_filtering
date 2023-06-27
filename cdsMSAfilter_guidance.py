@@ -10,15 +10,14 @@ import os
 from Bio import AlignIO
 import argparse 
 
-def parse_args():
-    parser = argparse.ArgumentParser(prog="cdsMSAfilter_guidance",description="This program allows to filter a nucleotide alignment obtained by transposing protein MSAs and performed using GUIDANCE. There are two options: filter nucleotide MSAs using the GUIDANCE results and remove gaps in MSAs. WARNING: this program needs python3 and biopython to be installed (pip install biopython)",epilog="This program is freely available, please cite Fouks et al. 2023 iScience")
-    parser.add_argument("-PM", "--ProjectMode", choices =['filter+gap', 'filter', 'gap'], required=True, help="Three options are available: filter cds MSAs using guidance scores and remove gaps (filter+gap), filter cds MSAs using guidance scores only (filter), and only remove gaps (gap)") # mode: filter+gap, gap, filter
-    parser.add_argument("-GF", "--GuidanceFolder", required=True, help = "Please indicate the full path of the proteins MSA GUIDANCE folder")
-    parser.add_argument("-FS", "--FilteringScore", required=False, default = 0.93, type = float, help = "Please indicate the threshold you want from the GUIDANCE scores. Default is 0.93 as in GUIDANCE default setup")
-    parser.add_argument("-M", "--MSA", required=True, help = "Please indicate the full path and name of the nucleotide (cds) MSA obtained (e.g. Pal2nal) by transposing amino acid MSA into nucleotide MSA")
-    parser.add_argument("-FM", "--FilteredMSA", required=True, help = "Please indicate the full path and name of the output MSA")
-    return parser
-
+parser = argparse.ArgumentParser(prog="cdsMSAfilter_guidance",description="This program allows to filter a nucleotide alignment obtained by transposing protein MSAs and performed using GUIDANCE. There are two options: filter nucleotide MSAs using the GUIDANCE results and remove gaps in MSAs. WARNING: this program needs python3 and biopython to be installed (pip install biopython)",epilog="This program is freely available, please cite Fouks et al. 2023 iScience")
+parser.add_argument("-PM", "--ProjectMode", choices =['filter+gap', 'filter', 'gap'], required=True, help="Three options are available: filter cds MSAs using guidance scores and remove gaps (filter+gap), filter cds MSAs using guidance scores only (filter), and only remove gaps (gap)") # mode: filter+gap, gap, filter
+parser.add_argument("-GF", "--GuidanceFolder", required=True, help = "Please indicate the full path of the proteins MSA GUIDANCE folder")
+parser.add_argument("-FS", "--FilteringScore", required=False, default = 0.93, type = float, help = "Please indicate the threshold you want from the GUIDANCE scores. Default is 0.93 as in GUIDANCE default setup")
+parser.add_argument("-M", "--MSA", required=True, help = "Please indicate the full path and name of the nucleotide (cds) MSA obtained (e.g. Pal2nal) by transposing amino acid MSA into nucleotide MSA")
+parser.add_argument("-FM", "--FilteredMSA", required=True, help = "Please indicate the full path and name of the output MSA")
+args = parser.parse_args(args)
+    
 def rmgap(aln):
     lenaln = aln.get_alignment_length()
     newaln = aln[:,:1]
@@ -32,7 +31,7 @@ def rmgap(aln):
     gdaln = newaln[:,1:]
     return gdaln
 
-def filtaln(caln,path):
+def filtaln(caln,path,FilteringScore):
     rmvposS = []
     rmvposE = []
     for file in os.listdir(path):
@@ -67,12 +66,12 @@ def filtaln(caln,path):
             gftaln = ftaln[:,1:]
     return gftaln
 
-def cdsMSAfilter_guidance(args):        
+def cdsMSAfilter_guidance(args.ProjectMode,args.GuidanceFolder,args.FilteringScore,args.MSA,args.FilteredMSA):        
     if ProjectMode == 'filter+gap':
-        fltaln = filtaln(args.MSA,args.GuidanceFolder)
+        fltaln = filtaln(args.MSA,args.GuidanceFolder,args.FilteringScore)
         gfltaln = rmgap(fltaln)
     elif ProjectMode == 'filter':
-        gfltaln = filtaln(args.MSA,args.GuidanceFolder)
+        gfltaln = filtaln(args.MSA,args.GuidanceFolder,args.FilteringScore)
     elif ProjectMode == 'gap':
         aln = AlignIO.read('%s' % args.MSA,'fasta')
         gfltaln = rmgap(aln)
@@ -82,6 +81,13 @@ def cdsMSAfilter_guidance(args):
     AlignIO.write(gfltaln,args.FilteredMSA,'fasta')  
 
 if __name__ == "__main__":    
-    parser = parse_args()
+    import argparse 
+    parser = argparse.ArgumentParser(prog="cdsMSAfilter_guidance",description="This program allows to filter a nucleotide alignment obtained by transposing protein MSAs and performed using GUIDANCE. There are two options: filter nucleotide MSAs using the GUIDANCE results and remove gaps in MSAs. WARNING: this program needs python3 and biopython to be installed (pip install biopython)",epilog="This program is freely available, please cite Fouks et al. 2023 iScience")
+    parser.add_argument("-PM", "--ProjectMode", choices =['filter+gap', 'filter', 'gap'], required=True, help="Three options are available: filter cds MSAs using guidance scores and remove gaps (filter+gap), filter cds MSAs using guidance scores only (filter), and only remove gaps (gap)") # mode: filter+gap, gap, filter
+    parser.add_argument("-GF", "--GuidanceFolder", required=True, help = "Please indicate the full path of the proteins MSA GUIDANCE folder")
+    parser.add_argument("-FS", "--FilteringScore", required=False, default = 0.93, type = float, help = "Please indicate the threshold you want from the GUIDANCE scores. Default is 0.93 as in GUIDANCE default setup")
+    parser.add_argument("-M", "--MSA", required=True, help = "Please indicate the full path and name of the nucleotide (cds) MSA obtained (e.g. Pal2nal) by transposing amino acid MSA into nucleotide MSA")
+    parser.add_argument("-FM", "--FilteredMSA", required=True, help = "Please indicate the full path and name of the output MSA")
     args = parser.parse_args(args)
-    cdsMSAfilter_guidance(args)
+    cdsMSAfilter_guidance(args.ProjectMode,args.GuidanceFolder,args.FilteringScore,args.MSA,args.FilteredMSA)
+    
