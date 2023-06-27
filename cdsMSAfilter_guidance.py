@@ -66,19 +66,19 @@ def filtaln(caln,path,FilteringScore):
             gftaln = ftaln[:,1:]
     return gftaln
 
-def cdsMSAfilter_guidance(args.ProjectMode,args.GuidanceFolder,args.FilteringScore,args.MSA,args.FilteredMSA):        
+def cdsMSAfilter_guidance(ProjectMode,GuidanceFolder,FilteringScore,MSA,FilteredMSA):        
     if ProjectMode == 'filter+gap':
-        fltaln = filtaln(args.MSA,args.GuidanceFolder,args.FilteringScore)
+        fltaln = filtaln(args.MSA,args.GuidanceFolder,FilteringScore)
         gfltaln = rmgap(fltaln)
     elif ProjectMode == 'filter':
-        gfltaln = filtaln(args.MSA,args.GuidanceFolder,args.FilteringScore)
+        gfltaln = filtaln(MSA,GuidanceFolder,FilteringScore)
     elif ProjectMode == 'gap':
-        aln = AlignIO.read('%s' % args.MSA,'fasta')
+        aln = AlignIO.read('%s' % MSA,'fasta')
         gfltaln = rmgap(aln)
     else:
         print("The mode specified '%s' does not exist" % ProjectMode)
         raise SystemExit(1)
-    AlignIO.write(gfltaln,args.FilteredMSA,'fasta')  
+    AlignIO.write(gfltaln,FilteredMSA,'fasta')  
 
 if __name__ == "__main__":    
     import argparse 
