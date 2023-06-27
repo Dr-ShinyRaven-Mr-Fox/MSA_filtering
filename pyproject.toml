@@ -13,4 +13,4 @@ requires-python = ">=3.7"
 authors = [{ name = "Dr-ShinyRaven-Mr-Fox", email = "bfouks@wwu.de" }]
 
 [project.scripts]
-cdsMSAfilter_guidance = "MSA_filtering:cdsMSAfilter_guidance"
+cdsMSAfilter_guidance = "cdsMSAfilter_guidance:cdsMSAfilter"
