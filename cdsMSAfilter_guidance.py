@@ -88,4 +88,4 @@ def cdsMSAfilter(ProjectMode,GuidanceFolder,FilteringScore,MSA,FilteredMSA):
     AlignIO.write(gfltaln,FilteredMSA,'fasta')  
 
 if __name__ == "__main__":
-    cdsMSAfilter(args.ProjectMode,args.GuidanceFolder,args.FilteringScore,args.MSA,args.FilteredMSA)
+    cdsMSAfilter()
