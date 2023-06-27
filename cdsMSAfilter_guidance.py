@@ -80,5 +80,5 @@ if __name__ == "__main__":
     parser.add_argument("-FS", "--FilteringScore", required=False, default = 0.93, type = float, help = "Please indicate the threshold you want from the GUIDANCE scores. Default is 0.93 as in GUIDANCE default setup")
     parser.add_argument("-M", "--MSA", required=True, help = "Please indicate the full path and name of the nucleotide (cds) MSA obtained (e.g. Pal2nal) by transposing amino acid MSA into nucleotide MSA")
     parser.add_argument("-FM", "--FilteredMSA", required=True, help = "Please indicate the full path and name of the output MSA")
-    args = parser.parse_args()
+    args = parser.parse_args(args)
     cdsMSAfilter_guidance(args.ProjectMode,args.GuidanceFolder,args.FilteringScore,args.MSA,args.FilteredMSA)
