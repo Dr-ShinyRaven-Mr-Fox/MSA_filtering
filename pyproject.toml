@@ -17,4 +17,4 @@ dependencies = [
 authors = [{ name = "Dr-ShinyRaven-Mr-Fox", email = "bfouks@wwu.de" }]
 
 [project.scripts]
-my-client = "cdsMSAfilter_guidance.MSA_filtering:main_cli"
+my-script = "MSA_filtering.cdsMSAfilter_guidance:main"
