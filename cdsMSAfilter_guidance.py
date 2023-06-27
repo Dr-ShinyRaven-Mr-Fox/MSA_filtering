@@ -24,7 +24,7 @@ parser.add_argument("-FM", "--FilteredMSA", required=True, help = "Please indica
 
 args = parser.parse_args()
 
-def cdsMSAfilter(ProjectMode,GuidanceFolder,FilteringScore,MSA,FilteredMSA):
+def cdsMSAfilter_guidance(ProjectMode,GuidanceFolder,FilteringScore,MSA,FilteredMSA):
     def rmgap(aln):
         lenaln = aln.get_alignment_length()
         newaln = aln[:,:1]
@@ -87,5 +87,5 @@ def cdsMSAfilter(ProjectMode,GuidanceFolder,FilteringScore,MSA,FilteredMSA):
 
     AlignIO.write(gfltaln,FilteredMSA,'fasta')  
 
-#if __name__ == "__main__":
-cdsMSAfilter(args.ProjectMode,args.GuidanceFolder,args.FilteringScore,args.MSA,args.FilteredMSA)
+if __name__ == "__main__":
+    cdsMSAfilter_guidance(args.ProjectMode,args.GuidanceFolder,args.FilteringScore,args.MSA,args.FilteredMSA)
