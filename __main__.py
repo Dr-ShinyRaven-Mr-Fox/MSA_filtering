@@ -9,4 +9,4 @@ Created on Tue Jun 27 10:50:35 2023
 import os
 from Bio import AlignIO
 import argparse 
-from MSA_filtering import cdsMSAfilter_guidance
+from cdsMSAfilter_guidance import cdsMSAfilter
