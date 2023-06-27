@@ -80,7 +80,7 @@ def cdsMSAfilter_guidance(ProjectMode,GuidanceFolder,FilteringScore,MSA,Filtered
         raise SystemExit(1)
     AlignIO.write(gfltaln,FilteredMSA,'fasta')  
 
-if __name__ == "__main__":    
+if __name__ == "cdsMSAfilter_guidance":    
     import argparse 
     parser = argparse.ArgumentParser(prog="cdsMSAfilter_guidance",description="This program allows to filter a nucleotide alignment obtained by transposing protein MSAs and performed using GUIDANCE. There are two options: filter nucleotide MSAs using the GUIDANCE results and remove gaps in MSAs. WARNING: this program needs python3 and biopython to be installed (pip install biopython)",epilog="This program is freely available, please cite Fouks et al. 2023 iScience")
     parser.add_argument("-PM", "--ProjectMode", choices =['filter+gap', 'filter', 'gap'], required=True, help="Three options are available: filter cds MSAs using guidance scores and remove gaps (filter+gap), filter cds MSAs using guidance scores only (filter), and only remove gaps (gap)") # mode: filter+gap, gap, filter
