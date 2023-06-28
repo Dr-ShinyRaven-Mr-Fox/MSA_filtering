@@ -14,6 +14,6 @@ WARNING: this program needs python3 and biopython to be installed (pip install b
 
 To install the program either copy the folder in .zip and extract the python script 'cdsMSAfilter_guidance.py' and then run it using on the command line: 'python cdsMSAfilter_guidance.py -h' to display the information on the options needed to be given to run the code, or install with pip, as such: 'pip install "git+https://github.com/Dr-ShinyRaven-Mr-Fox/MSA_filtering.git" and then run it as such: 'MSA_filtering -h'.
 
-To uninstall the program if you installed with pip, please run on command line: 'pip uninstall MSA_filtering'
+To uninstall the program if you installed it with pip, please run on the command line: 'pip uninstall MSA_filtering'
 
 This program has been tested on ubuntu 22.04 and might not work for other OS.
