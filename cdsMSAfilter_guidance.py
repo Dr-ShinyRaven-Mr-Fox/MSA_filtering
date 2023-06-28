@@ -70,7 +70,7 @@ def filtaln(caln,path,FilteringScore):
 
 def cdsMSAfilter(ProjectMode,GuidanceFolder,FilteringScore,MSA,FilteredMSA):        
     if ProjectMode == 'filter+gap':
-        fltaln = filtaln(args.MSA,args.GuidanceFolder,FilteringScore)
+        fltaln = filtaln(MSA,GuidanceFolder,FilteringScore)
         gfltaln = rmgap(fltaln)
     elif ProjectMode == 'filter':
         gfltaln = filtaln(MSA,GuidanceFolder,FilteringScore)
