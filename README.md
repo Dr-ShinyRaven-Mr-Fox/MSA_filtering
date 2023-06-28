@@ -3,8 +3,11 @@
 This program allows to filter a nucleotide multiple sequenced alignment (MSA) based on GUIDANCE (http://guidance.tau.ac.il/) results of amino-acid MSA. This nucleotide MSA need to be obtained by transposing the non-filtered amino-acid MSA of GUIDANCE (for example through the help of pal2nal: http://www.bork.embl.de/pal2nal/). 
 
 There are two options: 
+
 (1) filter nucleotide MSAs based on the GUIDANCE scores for each amino-acid position
+
 (2) remove gaps in MSAs 
+
 Both options can be combined in one run.
 
 WARNING: this program needs python3 and biopython to be installed (pip install biopython), see requirements.txt file.
