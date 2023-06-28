@@ -8,6 +8,12 @@ build-backend = "setuptools.build_meta"
 name = "MSA_filtering"
 version = "0.0.1"
 description = "This program allows to filter a nucleotide alignment obtained by transposing protein MSAs and performed using GUIDANCE. There are two options: filter nucleotide MSAs using the GUIDANCE results and remove gaps in MSAs. WARNING: this program needs python3 and biopython to be installed (pip install biopython)"
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version<"3.8"',
+    'Bio',
+    'biopython'
+]
 readme = "README.md"
 requires-python = ">=3.7"
 authors = [{ name = "Dr-ShinyRaven-Mr-Fox", email = "bfouks@wwu.de" }]
