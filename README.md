@@ -1,5 +1,13 @@
 # MSA_filtering
 
-This program allows to filter a nucleotide alignment obtained by transposing protein MSAs and performed using GUIDANCE. There are two options: filter nucleotide MSAs using the GUIDANCE results and remove gaps in MSAs. WARNING: this program needs python3 and biopython to be installed (pip install biopython)
+This program allows to filter a nucleotide multiple sequenced alignment (MSA) based on GUIDANCE results of amino-acid MSA. This nucleotide MSA need to be obtained by transposing the non-filtered amino-acid MSA of GUIDANCE (for example through the help of pal2nal). 
 
-To install the program either copy the python script and call it with 'python cdsMSAfilter_guidance.py -h' or install with pip install "git+https://github.com/Dr-ShinyRaven-Mr-Fox/MSA_filtering.git" and run it as such: 'cdsMSAfilter_guidance -h'
+There are two options: filter nucleotide MSAs using the GUIDANCE scores for each amino-acid position and remove gaps in MSAs. 
+
+WARNING: this program needs python3 and biopython to be installed (pip install biopython), see requirements.txt file.
+
+To install the program either copy the folder in .zip and extract the python script 'cdsMSAfilter_guidance.py' and then run it using on the command line: 'python cdsMSAfilter_guidance.py -h' to display the information on the options needed to be given to run the code, or install with pip, as such: 'pip install "git+https://github.com/Dr-ShinyRaven-Mr-Fox/MSA_filtering.git" and then run it as such: 'MSA_filtering -h'.
+
+To uninstall the program if you installed with pip, please run on command line: 'pip uninstall MSA_filtering'
+
+This program has been tested on ubuntu 22.04 and might not work for other OS.
